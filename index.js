@@ -14,6 +14,7 @@ async function renderProducts() {
             console.log(product)
             let card = document.createElement('div');
             card.classList.add('product__card')
+            card.setAttribute("id", product.id);
             let price = document.createElement('p');
             appendChildToParent(price, `price: ${product.price}`)
             appendChildToParent(card, price)
@@ -43,10 +44,16 @@ async function renderProducts() {
             let addButton = document.createElement('button');
             appendChildToParent(addButton, '+')
             addButton.classList.add('button')
+            addButton.addEventListener("click", function(){
+                addQuantity()
+              });
             appendChildToParent(buttonContainer, addButton)
             let removeProduct = document.createElement('button');
             appendChildToParent(removeProduct, '-')
             removeProduct.classList.add('button')
+            removeProduct.addEventListener("click", function(){
+                subtractQuantity()
+            });
             appendChildToParent(buttonContainer, removeProduct)
             appendChildToParent(card, buttonContainer)
             appendChildToParent(productList, card)
@@ -57,3 +64,10 @@ function appendChildToParent(parent, child){
 }
 renderProducts()
 ROOT.append(productList)
+
+async function addQuantity() {
+    console.log('hello')
+}
+async function subtractQuantity() {
+    console.log('bye')
+}
