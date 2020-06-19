@@ -33,7 +33,7 @@ async function renderProducts() {
             appendChildToParent(id, `id: ${product.id}`)
             appendChildToParent(card, id)
             let product_id= document.createElement('p');
-            appendChildToParent(product_id, `product id${product.product_id}`)
+            appendChildToParent(product_id, `product id: ${product.product_id}`)
             appendChildToParent(card, product_id)
             let quantity= document.createElement('p');
             appendChildToParent(quantity, `quanity: ${product.quantity}`)
