@@ -66,8 +66,8 @@ renderProducts()
 ROOT.append(productList)
 
 async function addQuantity() {
-    console.log('hello')
+    console.log('Added more')
 }
 async function subtractQuantity() {
-    console.log('bye')
+    console.log('Subtracted more')
 }

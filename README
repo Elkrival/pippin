@@ -1,0 +1,29 @@
+How to use:
+Copy repo to your computer
+Navigate to directory
+Npm install
+
+Starting Server:
+1. Navigate to directory and run 'npm start'
+
+Starting Client: 
+1. Copy html relative path
+2. paste on browser
+
+Please update your README with explanations of your technical choices. With more time, how might you improve your submission?
+
+I was told that it would be a vanilla javascript application client and while using the application the endpoints did not work. I expressed
+my frustration due to misinformation and had to pivot my entire plan of the application.
+
+The new plan involved writting a node server that would circumvent the CORS issues from GoPuff this added more time to the necessary building 
+of the Cart Page. Once that was implemented then building the application from scratch was not a problem. At that point it required a handoff from 
+server to client and then displaying the data.
+
+If I had more time I would have been able to complete majority of the tasks. THe application would then use the express server to hold the state of the returned products
+and the routes would modify that array when adding or subtracting quantities of that product. When these calls are made the dom would need to be cleared and it would need to 
+fetch the updated list.
+
+To update the list I have created asynchornous functions to handle the requests. 
+
+Lost a lot of time due to misinformation.
+
