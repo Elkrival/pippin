@@ -5,4 +5,18 @@ body {
 #root{
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.product_list{
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+}
+.product__card{
+    width: 200px;
+    height: 200px;
+    border: solid red 1px;
+    display: flex;
+    flex-direction: column;
 }

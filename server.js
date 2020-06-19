@@ -10,7 +10,7 @@ app.use(bp.urlencoded({extended: true}));
 app.use(cors());
 
 const cartUrl = "https://gopuff-public.s3.amazonaws.com/dev-assignments/product/order.json"
-
+let ProductState;
 app.get('/getCart', async(req, res) =>{
     console.log("YASASAS");
     try {
@@ -20,6 +20,7 @@ app.get('/getCart', async(req, res) =>{
     }
     async function getCart() {
         const data = await axios.get(cartUrl).then(resp => resp.data.cart)
+        ProductState = data.products
         return await res.status(200).json(data);
     }
 })

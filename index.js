@@ -1,67 +1,48 @@
 const URL = "http://localhost:3000";
-const ROOT = let boardParentDiv = document.getElementById('root');
-async function getCart(){
-    console.log("Call me functions")
-    const result= await fetch(`${URL}/getCart`).then(data => data.json()).then(data => {
-        console.log(data)
-        return data.products
-    });
-    console.log(result);
-}
-const cartProducts = getCart() || [];
+const ROOT =  document.getElementById('root');
+const productList =  document.getElementById('product_list');
 
-function renderProducts(products) {
-    if(Array.isArray(products) && products.length < 1) {
-        for (let index = 0; index < products; index++) {
-            const product = products[index];
+async function getCart(){
+    const result= await fetch(`${URL}/getCart`).then(data => data.json()).then(data => data.products);
+    return result
+}
+
+async function renderProducts() {
+    const cartProducts = await getCart();
+        for (let index = 0; index < cartProducts.length; index++) {
+            const product = cartProducts[index];
+            console.log(product)
             let card = document.createElement('div');
             card.classList.add('product__card')
-            
+            let price = document.createElement('p');
+            appendChildToParent(price, product.price)
+            appendChildToParent(card, price)
+            let available_for_bonus= document.createElement('p');
+            appendChildToParent(available_for_bonus, product.available_for_bonus)
+            appendChildToParent(card, available_for_bonus)
+            let category_id= document.createElement('p');
+            appendChildToParent(category_id, product.category_id)
+            appendChildToParent(card, category_id)
+            let credit_coupon_price= document.createElement('p');
+            appendChildToParent(credit_coupon_price, product.credit_coupon_price)
+            appendChildToParent(card, credit_coupon_price)
+            let discount= document.createElement('p');
+            appendChildToParent(discount, product.discount)
+            appendChildToParent(card, discount)
+            let id= document.createElement('p');
+            appendChildToParent(id, product.id)
+            appendChildToParent(card, id)
+            let product_id= document.createElement('p');
+            appendChildToParent(product_id, product.product_id)
+            appendChildToParent(card, product_id)
+            let quantity= document.createElement('p');
+            appendChildToParent(quantity, product.quantity)
+            appendChildToParent(card, quantity)
+            appendChildToParent(productList, card)
         }
-    } else return products
 }
-function displayProducts(array) {
-    let board = []
-
-    for (let index = 0; index < array.length; index++) {
-        const tileData = { position: index, letter: null };
-        board.push(tileData)
-       let tile = document.createElement('div');
-       let wrapper = document.createElement('div');
-       wrapper.classList.add('wrap')
-       tile.setAttribute('id', index)
-       tile.classList.add(`board__tile`, `board__tile--${index}`);
-       for(let cubeEffectIndex = 0; cubeEffectIndex < 6; cubeEffectIndex++) {
-       let front = document.createElement('div');
-       let back = document.createElement('div');
-       let right = document.createElement('div');
-       let left = document.createElement('div');
-       let bottom = document.createElement('div');
-       let top = document.createElement('div');
-       front.classList.add('board__tile--cube', 'board__tile--cube--back')
-       front.style['background-color'] = 'red'
-       back.classList.add('board__tile--cube','board__tile--cube--right')
-       back.style['background-color'] = 'blue'
-       right.classList.add('board__tile--cube','board__tile--cube--left');
-       right.style['background-color'] = 'yellow';  
-       left.classList.add('board__tile--cube','board__tile--cube--front');
-       front.style.opacity = 0.2
-       bottom.classList.add('board__tile--cube','board__tile--cube--bottom');
-       bottom.style['background-color'] = 'green';
-       top.classList.add('board__tile--cube','board__tile--cube--top')
-       top.style['background-color'] = 'orange';
-       tile.appendChild(front)
-       tile.appendChild(back)
-       tile.appendChild(right)
-       tile.appendChild(left)
-       tile.appendChild(bottom)
-       tile.appendChild(top)
-    
-       }
-       tile.addEventListener("click", function(){
-       doIt(tileData);
-   })
-        boardParentDiv.appendChild(wrapper)
-        wrapper.appendChild(tile)
-    }
-   }
+function appendChildToParent(parent, child){
+    return parent.append(child)
+}
+renderProducts()
+ROOT.append(productList)
