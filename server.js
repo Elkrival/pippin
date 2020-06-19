@@ -12,7 +12,6 @@ app.use(cors());
 const cartUrl = "https://gopuff-public.s3.amazonaws.com/dev-assignments/product/order.json"
 let ProductState;
 app.get('/getCart', async(req, res) =>{
-    console.log("YASASAS");
     try {
         return await getCart()
     } catch (error) {
@@ -24,7 +23,12 @@ app.get('/getCart', async(req, res) =>{
         return await res.status(200).json(data);
     }
 })
+app.put('/addProducts', async(req, res) =>{
 
+})
+app.put('/removeProducts', async(req, res) =>{
+    
+})
 app.listen(PORT, function () {
     console.log('listen to events on a "port: ', PORT)
 });

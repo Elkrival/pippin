@@ -15,29 +15,40 @@ async function renderProducts() {
             let card = document.createElement('div');
             card.classList.add('product__card')
             let price = document.createElement('p');
-            appendChildToParent(price, product.price)
+            appendChildToParent(price, `price: ${product.price}`)
             appendChildToParent(card, price)
             let available_for_bonus= document.createElement('p');
-            appendChildToParent(available_for_bonus, product.available_for_bonus)
+            appendChildToParent(available_for_bonus, `bonus: ${product.available_for_bonus}`)
             appendChildToParent(card, available_for_bonus)
             let category_id= document.createElement('p');
-            appendChildToParent(category_id, product.category_id)
+            appendChildToParent(category_id, `category: ${product.category_id}`)
             appendChildToParent(card, category_id)
             let credit_coupon_price= document.createElement('p');
-            appendChildToParent(credit_coupon_price, product.credit_coupon_price)
+            appendChildToParent(credit_coupon_price, `coupon price:${product.credit_coupon_price}`)
             appendChildToParent(card, credit_coupon_price)
             let discount= document.createElement('p');
-            appendChildToParent(discount, product.discount)
+            appendChildToParent(discount, `discount: ${product.discount}`)
             appendChildToParent(card, discount)
             let id= document.createElement('p');
-            appendChildToParent(id, product.id)
+            appendChildToParent(id, `id: ${product.id}`)
             appendChildToParent(card, id)
             let product_id= document.createElement('p');
-            appendChildToParent(product_id, product.product_id)
+            appendChildToParent(product_id, `product id${product.product_id}`)
             appendChildToParent(card, product_id)
             let quantity= document.createElement('p');
-            appendChildToParent(quantity, product.quantity)
+            appendChildToParent(quantity, `quanity: ${product.quantity}`)
             appendChildToParent(card, quantity)
+            let buttonContainer = document.createElement('div')
+            buttonContainer.classList.add('b_container')
+            let addButton = document.createElement('button');
+            appendChildToParent(addButton, '+')
+            addButton.classList.add('button')
+            appendChildToParent(buttonContainer, addButton)
+            let removeProduct = document.createElement('button');
+            appendChildToParent(removeProduct, '-')
+            removeProduct.classList.add('button')
+            appendChildToParent(buttonContainer, removeProduct)
+            appendChildToParent(card, buttonContainer)
             appendChildToParent(productList, card)
         }
 }

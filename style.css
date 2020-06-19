@@ -14,9 +14,34 @@ body {
     margin: 0 auto;
 }
 .product__card{
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 500px;
     border: solid red 1px;
     display: flex;
     flex-direction: column;
+}
+.bcontainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.button {
+	background-color:red;
+	border-radius:28px;
+	border:1px solid red;
+	display:inline-block;
+	cursor:pointer;
+	color: blue;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px red;
+}
+.button:hover {
+	background-color:red;
+}
+.button:active {
+	position:relative;
+	top:1px;
 }
