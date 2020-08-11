@@ -87,8 +87,26 @@ app.patch('/update-book', async(req, res) =>{
         }
     }
 })
-app.put('/removeProducts', async(req, res) =>{
-    
+app.get('/get-books', async(req, res) =>{
+    const callback = function (object){
+        return object
+    }
+    try{
+        const result = getBookList(Library, 0, callback)
+        return res.status(200).json({ data: result, success: true })
+    }catch(e) {
+        console.error(e.message)
+    }
+    function getBookList(list,index,callback) {
+        callback({result: "" });
+        if (index === list.length)
+           return callback.result;
+        else{
+           callback.result = callback.result == null || callback.result === "" 
+           ? list[index] : callback.result + "|" + list[index] 
+           return getBookList(list, index + 1, callback);
+        }
+     }
 })
 
 app.listen(PORT, function () {
