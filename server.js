@@ -108,7 +108,22 @@ app.get('/get-books', async(req, res) =>{
         }
      }
 })
-
+app.put('/book-to-database', async(req, res) =>{
+    const { book } = req.body;
+    try{
+        const result = await saveItemToDatabase(book)
+        return res.status(200).json(result)
+    }catch(e){
+        console.error(e.stack);
+    }
+    async function saveItemToDatabase(name) {
+        const keyAndTimer = Math.random(name.length + Library.length)
+        await setTimeout(() => {
+        }, 1000);
+        let result = { [name]: keyAndTimer }
+        return result
+    }
+})
 app.listen(PORT, function () {
     console.log('listen to events on a "port: ', PORT)
 });
