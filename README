@@ -6,3 +6,6 @@ Npm install
 Starting Server:
 1. Navigate to directory and run 'npm start'
 
+Running Tests:
+1. Make sure all node modules are installed
+2. Run ./node_modules/mocha/bin/mocha on your terminal
